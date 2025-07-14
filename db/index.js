@@ -6,7 +6,7 @@ const mysql = require('mysql2'); // 用 mysql2
 const db = mysql.createPool({
 	host: 'localhost',
 	user: 'root',
-	password: 'wujl1124',
+	password: '123456',
 	database: 'back_system'
 });
 
