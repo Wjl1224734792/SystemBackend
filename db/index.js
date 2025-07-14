@@ -5,7 +5,7 @@ const mysql = require('mysql2'); // 用 mysql2
 // 创建与数据库的连接
 const db = mysql.createPool({
 	host: 'localhost',
-	user: 'root',
+	user: 'admin',
 	password: '123456',
 	database: 'back_system'
 });
