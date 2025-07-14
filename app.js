@@ -21,7 +21,7 @@ app.use(upload.any())
 // app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static("./public"));
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
+	res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 // parse application/x-www-form-urlencoded
 // 当extended为false时，值为数组或者字符串，当为ture时，值可以为任意类型
@@ -77,11 +77,11 @@ const depMsgRouter = require('./router/department_msg.js')
 app.use('/dm', depMsgRouter)
 
 // 对不符合joi规则的情况进行报错
-app.use((err,req, res, next) => {
-	if (err instanceof Joi.ValidationError){
+app.use((err, req, res, next) => {
+	if (err instanceof Joi.ValidationError) {
 		res.send({
 			status: 1,
-			message:'输入的数据不符合验证规则'
+			message: '输入的数据不符合验证规则'
 		})
 	}
 })
@@ -90,19 +90,19 @@ app.use((err,req, res, next) => {
 app.use(function (err, req, res, next) {
 	if (err.name === "UnauthorizedError") {
 		res.send({
-			status:401,
-			message:'无效的Token',
+			status: 401,
+			message: '无效的Token',
 
 		})
 	}
 	res.send({
-			status:500,
-			message:'未知的错误',
-		}
+		status: 500,
+		message: '未知的错误',
+	}
 	)
 });
 
 // 绑定和侦听指定的主机和端口
-app.listen(3007, () => {
-	console.log('http://127.0.0.1:3007')
+app.listen(3007, '0.0.0.0', () => {
+	console.log(`Server running on http://0.0.0.0:3007`);
 })
